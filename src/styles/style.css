@@ -1,0 +1,6 @@
+.bg {
+  background: red url(../images/iphoto.jpg) no-repeat;
+  background-size: cover;
+  height: 100px;
+  width: 100px;
+}
