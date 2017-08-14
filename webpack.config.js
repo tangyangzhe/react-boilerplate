@@ -2,8 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
 
-module.exports = {
+const config = {
   entry: {
     app: './src/app.tsx'
   },
@@ -18,7 +19,8 @@ module.exports = {
   devtool: 'source-map',
 
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    hot: true
   },
 
   resolve: {
@@ -72,7 +74,8 @@ module.exports = {
       title: 'react-boilerplate',
       hash: true
     }),
-    new ExtractTextPlugin('css/[name].bundle.css')
+    new ExtractTextPlugin('css/[name].bundle.css'),
+    new webpack.HotModuleReplacementPlugin()
   ],
 
   // When importing a module whose path matches one of the following, just
@@ -84,3 +87,5 @@ module.exports = {
     'react-dom': 'ReactDOM'
   },
 };
+
+module.exports = config;
