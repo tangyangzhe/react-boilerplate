@@ -68,7 +68,6 @@ const config = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       title: 'react-boilerplate',
@@ -90,5 +89,9 @@ const config = {
     'react-dom': 'ReactDOM'
   },
 };
+
+if (process.env.NODE_ENV === 'prod') {
+  config.plugins.push(new CleanWebpackPlugin(['dist']));
+}
 
 module.exports = config;
