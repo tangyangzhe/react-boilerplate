@@ -77,6 +77,9 @@ const config = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common'
     })
   ],
 
@@ -93,5 +96,7 @@ const config = {
 if (process.env.NODE_ENV === 'prod') {
   config.plugins.push(new CleanWebpackPlugin(['dist']));
 }
+
+console.log('env: ', process.env.NODE_ENV)
 
 module.exports = config;
