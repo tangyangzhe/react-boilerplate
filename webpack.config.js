@@ -10,7 +10,7 @@ const config = {
   },
 
   output: {
-    filename: 'js/[name].bundle.js',
+    filename: 'js/[name].[chunkhash].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
@@ -70,11 +70,9 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      title: 'react-boilerplate',
-      hash: true
+      title: 'react-boilerplate'
     }),
-    new ExtractTextPlugin('css/[name].bundle.css'),
-    new webpack.HotModuleReplacementPlugin(),
+    new ExtractTextPlugin('css/[name].[contenthash].css'),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
@@ -93,8 +91,15 @@ const config = {
   },
 };
 
+if (process.env.NODE_ENV === 'dev') {
+  config.plugins.push(new webpack.HotModuleReplacementPlugin());
+}
+
 if (process.env.NODE_ENV === 'prod') {
-  config.plugins.push(new CleanWebpackPlugin(['dist']));
+  config.plugins.push(
+    new CleanWebpackPlugin(['dist']),
+    new webpack.HashedModuleIdsPlugin()
+  );
 }
 
 module.exports = config;
