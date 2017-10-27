@@ -10,7 +10,7 @@ const config = {
   },
 
   output: {
-    filename: 'js/[name].[chunkhash].js',
+    filename: process.env.NODE_ENV === 'prod' ? 'js/[name].[chunkhash].js' : 'js/[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
