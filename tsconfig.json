@@ -1,14 +1,24 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
     "sourceMap": true,
-    "noImplicitAny": true,
-    "module": "commonjs",
+    "module": "esnext",
     "target": "es5",
+    "moduleResolution": "node",
+    "types": ["node", "react", "react-dom"],
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "noImplicitAny": false,
+    "baseUrl": ".",
     "jsx": "react",
-    "allowJs": true
+    "allowJs": true,
+    "paths": {
+      "~/*": ["src/*"]
+    }
   },
-  "include": [
-    "./src/**/*"
-  ]
+  "awesomeTypescriptLoaderOptions": {
+    "transpileOnly": true
+  },
+  "compileOnSave": true,
+  "include": ["src/**/*"]
 }
