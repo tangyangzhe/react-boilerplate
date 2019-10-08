@@ -1,16 +1,16 @@
 {
   "name": "ts-react",
   "version": "1.0.0",
-  "description": "",
-  "main": "src/index.tsx",
+  "description": "react boilerplate",
+  "main": "src/app.tsx",
   "scripts": {
     "test": "jest --coverage",
     "start": "cross-env NODE_ENV=dev webpack-dev-server --open",
     "build": "cross-env NODE_ENV=prod webpack -p",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Yangzhe Tang",
+  "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.15",
     "react": "^16.9.0",
